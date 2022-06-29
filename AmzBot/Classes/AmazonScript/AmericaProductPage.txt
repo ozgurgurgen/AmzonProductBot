@@ -1,0 +1,108 @@
+﻿price = document.querySelector('.a-offscreen').innerText 
+isPrice = price.includes('$') 
+stockamountButton = document.querySelector('.a-button.a-button-dropdown.a-button-small').querySelector('#a-autoid-0-announce') 
+detailsButton = document.querySelector('#exports_desktop_qualifiedBuybox_tlc_feature_div > span.a-declarative') 
+
+price1 = Number(document.querySelector('#rightCol').innerText.split('\n')[0].replace('$',''))
+priceS = document.querySelector('#rightCol').innerText.split('\n')[2]
+priceS2 = priceS.indexOf('$')
+priceS3 = priceS.substr(priceS2+1)
+price2 = Number(priceS3.substring(0,priceS3.indexOf(' ')))
+if(priceS.includes('$')){
+    resultPrice = price1+price2
+} else {
+    resultPrice = price1
+}
+
+list = [] 
+stockAmount = 0 
+sellerCount = 0 
+if(isPrice) 
+{ 
+    if(stockamountButton === null) 
+    { 
+        stockAmount = 1;  
+    } 
+    else 
+    {         
+        stockamountButton.click() 
+    } 
+    result = price.substring(1)  
+} 
+setTimeout(function() { 
+  stockAmount = document.querySelector('.a-nostyle.a-list-link').childNodes.length 
+  productName = document.querySelector('#productTitle').innerText 
+   
+  weight = ''     
+  asinCode = '' 
+  itemRank = '' 
+   
+  list1 = document.querySelector('#detailBulletsWrapper_feature_div') 
+  list2 = document.querySelector('#prodDetails') 
+    if(list1 != null) 
+    { 
+        listQuery = document.querySelector('#detailBulletsWrapper_feature_div').innerText.split('\\n') 
+        for(var i = 0; i< listQuery.length-3; i++) 
+        { 
+           satır = listQuery[i] 
+            satır = satır.split(':') 
+            sutun1 = satır[0] 
+            sutun2 = satır[1] 
+            if(sutun1.includes('ASIN')) 
+            { 
+                asinCode = sutun2.trim() 
+            } 
+            else if(sutun1.includes('Best Sellers Rank')) 
+            { 
+                itemRank = sutun2.replaceAll(',','').trim() 
+            } 
+            else if(sutun1.includes('Weight')) 
+            { 
+                weight = sutun2.trim() 
+            } 
+        } 
+    } else if (list2 != null) 
+    { 
+        listQuery = document.querySelector('#prodDetails').innerText.split('\\n') 
+         
+        for(var i = 0; i< listQuery.length-3; i++) 
+        { 
+           satır = listQuery[i] 
+            satır = satır.split('\\t') 
+            sutun1 = satır[0] 
+            sutun2 = satır[1] 
+            if(sutun1.includes('ASIN')) 
+            { 
+                asinCode = sutun2.trim() 
+            } 
+            else if(sutun1.includes('Best Sellers Rank')) 
+            { 
+                itemRank = sutun2.replaceAll(',','').trim() 
+            } 
+            else if(sutun1.includes('Weight')) 
+            { 
+                weight = sutun2.trim() 
+            } 
+             
+        } 
+    }  
+     
+  if(document.querySelector('.olp-text-box') != null) 
+  { 
+      text = document.querySelector('.olp-text-box').innerText 
+      acParantez = text.lastIndexOf('(') 
+      kapaParantez = text.lastIndexOf(')') 
+      sellerCount = text.substring(acParantez+1,kapaParantez)   
+       
+  } else { 
+      sellerCount = 1; 
+  } 
+    list[0] = asinCode 
+    list[1] = resultPrice 
+    list[2] = stockAmount 
+    list[3] = itemRank 
+    list[4] = weight 
+console.log(asinCode +','+resultPrice +','+ stockAmount +','+ itemRank +','+ weight) 
+sonuc = asinCode + ',' + productName +','+resultPrice +','+ stockAmount +','+ weight + ','
+let p = document.createElement('p'); p.id = 'benEkledim'; p.innerText = sonuc; document.querySelector('html').appendChild(p); 
+}, 1000); 

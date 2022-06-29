@@ -1,0 +1,90 @@
+﻿/*if( window.location.href != 'https://www.amazon.ca/dp/'){    
+sellerCount = 0  
+pricePart1 = document.querySelector('#rightCol').innerText.indexOf('$')
+resultPrice = document.querySelector('#rightCol').innerText.substr(pricePart1).split('\n')[0].replace('$','')
+setTimeout(function() {  
+  productName = document.querySelector('#productTitle').innerText            
+  asinCode = ''  
+  itemRank = ''      
+  list1 = document.querySelector('#detailBulletsWrapper_feature_div')  
+  list2 = document.querySelector('#prodDetails')  
+    if(list1 != null)  
+    {  
+        listQuery = document.querySelector('#detailBulletsWrapper_feature_div').innerText.split('\n'); 
+        for(var i = 0; i< listQuery.length-3; i++)  
+        {  
+           satır = listQuery[i]  
+            satır = satır.split(':')  
+            sutun1 = satır[0]  
+            sutun2 = satır[1]  
+            if(sutun1.includes('Best Sellers Rank')) 
+            {  part1 = document.querySelector('#prodDetails').innerText.indexOf('Best Sellers Rank'); part2 = document.querySelector('#prodDetails').innerText.indexOf('\n\n');
+                itemRank = document.querySelector('#prodDetails').innerText.substring(part1+18, part2).replaceAll('\n',' ').replaceAll(',','')}}; 
+    } else if (list2 != null) { listQuery = document.querySelector('#prodDetails').innerText.split('\n');
+        for(var i = 2; i< listQuery.length-3; i++) {  
+           satır = listQuery[i];  
+            satır = satır.split('\t');
+            sutun1 = satır[0];  
+            sutun2 = satır[1];  
+            if(sutun1.includes('Best Sellers Rank')) 
+            {  part1 = document.querySelector('#prodDetails').innerText.indexOf('Best Sellers Rank'); part2 = document.querySelector('#prodDetails').innerText.indexOf('\n\n');
+                itemRank = document.querySelector('#prodDetails').innerText.substring(part1+18, part2).replaceAll('\n',' ').replaceAll(',','')}}};
+  if(document.querySelector('.olp-text-box') != null)  
+  {  text = document.querySelector('.olp-text-box').innerText  
+      acParantez = text.lastIndexOf('(')  
+      kapaParantez = text.lastIndexOf(')')  
+      sellerCount = text.substring(acParantez+1,kapaParantez)} else {sellerCount = 1;}   
+console.log(resultPrice +','+ itemRank)  
+sonuc = resultPrice +','+ sellerCount +','+ itemRank  
+let p = document.createElement('p'); p.id = 'benEkledim'; p.innerText = sonuc; document.querySelector('html').appendChild(p);}, 1000);
+} else {
+    let p = document.createElement('p'); p.id = 'benEkledim'; p.innerText = '-1'; document.querySelector('html').appendChild(p)
+}*/
+
+if(!document.querySelectorAll('img')[1].getAttribute('alt').includes("Sorry! We couldn't find that page."))
+{
+    if( window.location.href != 'https://www.amazon.ca/dp/'){    
+sellerCount = 0  
+pricePart1 = document.querySelector('#rightCol').innerText.indexOf('$')
+resultPrice = document.querySelector('#rightCol').innerText.substr(pricePart1).split('\n')[0].replace('$','')
+setTimeout(function() {  
+  productName = document.querySelector('#productTitle').innerText            
+  asinCode = ''  
+  itemRank = ''      
+  list1 = document.querySelector('#detailBulletsWrapper_feature_div')  
+  list2 = document.querySelector('#prodDetails')  
+    if(list1 != null)  
+    {  
+        listQuery = document.querySelector('#detailBulletsWrapper_feature_div').innerText.split('\n'); 
+        for(var i = 0; i< listQuery.length-3; i++)  
+        {  
+           satır = listQuery[i]  
+            satır = satır.split(':')  
+            sutun1 = satır[0]  
+            sutun2 = satır[1]  
+            if(sutun1.includes('Best Sellers Rank')) 
+            {  part1 = document.querySelector('#prodDetails').innerText.indexOf('Best Sellers Rank'); part2 = document.querySelector('#prodDetails').innerText.indexOf('\n\n');
+                itemRank = document.querySelector('#prodDetails').innerText.substring(part1+18, part2).replaceAll('\n',' ').replaceAll(',','')}}; 
+    } else if (list2 != null) { listQuery = document.querySelector('#prodDetails').innerText.split('\n');
+        for(var i = 2; i< listQuery.length-3; i++) {  
+           satır = listQuery[i];  
+            satır = satır.split('\t');
+            sutun1 = satır[0];  
+            sutun2 = satır[1];  
+            if(sutun1.includes('Best Sellers Rank')) 
+            {  part1 = document.querySelector('#prodDetails').innerText.indexOf('Best Sellers Rank'); part2 = document.querySelector('#prodDetails').innerText.indexOf('\n\n');
+                itemRank = document.querySelector('#prodDetails').innerText.substring(part1+18, part2).replaceAll('\n',' ').replaceAll(',','')}}};
+  if(document.querySelector('.olp-text-box') != null)  
+  {  text = document.querySelector('.olp-text-box').innerText  
+      acParantez = text.lastIndexOf('(')  
+      kapaParantez = text.lastIndexOf(')')  
+      sellerCount = text.substring(acParantez+1,kapaParantez)} else {sellerCount = 1;}   
+console.log(resultPrice +','+ itemRank)  
+sonuc = resultPrice +','+ sellerCount +','+ itemRank  
+let p = document.createElement('p'); p.id = 'benEkledim'; p.innerText = sonuc; document.querySelector('html').appendChild(p);}, 1000);
+} else {
+    let p = document.createElement('p'); p.id = 'benEkledim'; p.innerText = '-1'; document.querySelector('html').appendChild(p)
+}
+}else {
+    let p = document.createElement('p'); p.id = 'benEkledim'; p.innerText = '-1'; document.querySelector('html').appendChild(p)
+}
